@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get User Location</title>
+    <style>
+      body {
+            text-align: center;
+        }
+
+        #location {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    
+    </style>
+<script>
+   window.addEventListener('load', function() {
+            // Check if the Geolocation API is supported by the browser
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    document.getElementById('location').innerText = "Latitude: " + latitude + ", Longitude: " + longitude;
+                }, function(error) {
+                    // Handle error
+                    document.getElementById('location').innerText = "Error retrieving location information";
+                });
+            } else {
+                document.getElementById('location').innerText = "Geolocation is not supported by this browser";
+            }
+        });
+</script>
+  
+</head>
+<body>
+    <h1>Get User Location</h1>
+    <div id="location"></div>
+</body>
+</html>
